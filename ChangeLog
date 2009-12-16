@@ -1,0 +1,130 @@
+2009-12-16  Ivan Maidanski <ivmai@mail.ru>
+
+	* ChangeLog: New file.
+	* GNU_GPL.txt: New file (GNU GPLv2 license).
+	* index.html: Move to "htdocs" directory.
+	* ivmai/dns/DNSConnection.java: Move to "src/net/sf/ivmaidns/dns".
+	* ivmai/dns/DNSMsgHeader.java: Ditto.
+	* ivmai/dns/DNSName.java: Ditto.
+	* ivmai/dns/DNSRecAltCmp.java: Ditto.
+	* ivmai/dns/DNSRecord.java: Ditto.
+	* ivmai/storage/FilterStorage.java: Move to
+	"src/net/sf/ivmaidns/storage".
+	* ivmai/storage/HashedStorage.java: Ditto.
+	* ivmai/storage/IntStorage.java: Ditto.
+	* ivmai/storage/ListStorage.java: Ditto.
+	* ivmai/storage/ObjectStorage.java: Ditto.
+	* ivmai/storage/SortedStorage.java: Ditto.
+	* ivmai/storage/Storage.java: Ditto.
+	* ivmai/storage/StorageEnumerator.java: Ditto.
+	* ivmai/storage/StorageEvent.java: Ditto.
+	* ivmai/storage/TreeStorage.java: Ditto.
+	* ivmai/util/ActivityCore.java: Move to "src/net/sf/ivmaidns/util".
+	* ivmai/util/BooleanVector.java: Ditto.
+	* ivmai/util/ByteVector.java: Ditto.
+	* ivmai/util/CharVector.java: Ditto.
+	* ivmai/util/ConstPair.java: Ditto.
+	* ivmai/util/ConstVector.java: Ditto.
+	* ivmai/util/DoubleVector.java: Ditto.
+	* ivmai/util/FloatVector.java: Ditto.
+	* ivmai/util/GComparator.java: Ditto.
+	* ivmai/util/Immutable.java: Ditto.
+	* ivmai/util/Indexable.java: Ditto.
+	* ivmai/util/IntVector.java: Ditto.
+	* ivmai/util/JavaConsts.java: Ditto.
+	* ivmai/util/Lockable.java: Ditto.
+	* ivmai/util/LongVector.java: Ditto.
+	* ivmai/util/Metricable.java: Ditto.
+	* ivmai/util/MultiObservable.java: Ditto.
+	* ivmai/util/Notifiable.java: Ditto.
+	* ivmai/util/ObjectVector.java: Ditto.
+	* ivmai/util/ObservedCore.java: Ditto.
+	* ivmai/util/ParserException.java: Ditto.
+	* ivmai/util/PseudoRandom.java: Ditto.
+	* ivmai/util/ReallyCloneable.java: Ditto.
+	* ivmai/util/SafeRunnable.java: Ditto.
+	* ivmai/util/ShortVector.java: Ditto.
+	* ivmai/util/Sortable.java: Ditto.
+	* ivmai/util/StrComparator.java: Ditto.
+	* ivmai/util/ToString.java: Ditto.
+	* ivmai/util/TrimToSizeable.java: Ditto.
+	* ivmai/util/UnsignedInt.java: Ditto.
+	* ivmai/util/UnsignedLong.java: Ditto.
+	* ivmai/util/Verifiable.java: Ditto.
+	* dnslook.java: Move to "src/net/sf/ivmaidns".
+	* dnsx.java: Ditto.
+	* dnszcon.java: Ditto.
+	* src/net/sf/ivmaidns/dns/DNSConnection.java: Replace "ivmai" package
+	id with "net.sf.ivmaidns"; update the header and license; use LF
+	(instead of CR/LF) as EOLn.
+	* src/net/sf/ivmaidns/dns/DNSMsgHeader.java: Ditto.
+	* src/net/sf/ivmaidns/dns/DNSName.java: Ditto.
+	* src/net/sf/ivmaidns/dns/DNSRecAltCmp.java: Ditto.
+	* src/net/sf/ivmaidns/dns/DNSRecord.java: Ditto.
+	* src/net/sf/ivmaidns/storage/FilterStorage.java: Ditto.
+	* src/net/sf/ivmaidns/storage/HashedStorage.java: Ditto.
+	* src/net/sf/ivmaidns/storage/IntStorage.java: Ditto.
+	* src/net/sf/ivmaidns/storage/ListStorage.java: Ditto.
+	* src/net/sf/ivmaidns/storage/ObjectStorage.java: Ditto.
+	* src/net/sf/ivmaidns/storage/SortedStorage.java: Ditto.
+	* src/net/sf/ivmaidns/storage/Storage.java: Ditto.
+	* src/net/sf/ivmaidns/storage/StorageEnumerator.java: Ditto.
+	* src/net/sf/ivmaidns/storage/StorageEvent.java: Ditto.
+	* src/net/sf/ivmaidns/storage/TreeStorage.java: Ditto.
+	* src/net/sf/ivmaidns/util/ActivityCore.java: Ditto.
+	* src/net/sf/ivmaidns/util/BooleanVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/ByteVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/CharVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/ConstPair.java: Ditto.
+	* src/net/sf/ivmaidns/util/ConstVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/DoubleVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/FloatVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/GComparator.java: Ditto.
+	* src/net/sf/ivmaidns/util/Immutable.java: Ditto.
+	* src/net/sf/ivmaidns/util/Indexable.java: Ditto.
+	* src/net/sf/ivmaidns/util/IntVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/JavaConsts.java: Ditto.
+	* src/net/sf/ivmaidns/util/Lockable.java: Ditto.
+	* src/net/sf/ivmaidns/util/LongVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/Metricable.java: Ditto.
+	* src/net/sf/ivmaidns/util/MultiObservable.java: Ditto.
+	* src/net/sf/ivmaidns/util/Notifiable.java: Ditto.
+	* src/net/sf/ivmaidns/util/ObjectVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/ObservedCore.java: Ditto.
+	* src/net/sf/ivmaidns/util/ParserException.java: Ditto.
+	* src/net/sf/ivmaidns/util/PseudoRandom.java: Ditto.
+	* src/net/sf/ivmaidns/util/ReallyCloneable.java: Ditto.
+	* src/net/sf/ivmaidns/util/SafeRunnable.java: Ditto.
+	* src/net/sf/ivmaidns/util/ShortVector.java: Ditto.
+	* src/net/sf/ivmaidns/util/Sortable.java: Ditto.
+	* src/net/sf/ivmaidns/util/StrComparator.java: Ditto.
+	* src/net/sf/ivmaidns/util/ToString.java: Ditto.
+	* src/net/sf/ivmaidns/util/TrimToSizeable.java: Ditto.
+	* src/net/sf/ivmaidns/util/UnsignedInt.java: Ditto.
+	* src/net/sf/ivmaidns/util/UnsignedLong.java: Ditto.
+	* src/net/sf/ivmaidns/util/Verifiable.java: Ditto.
+	* src/net/sf/ivmaidns/dnslook.java: Set package name to
+	"net.sf.ivmaidns"; update the header and license; use LF (instead of
+	CR/LF) as EOLn.
+	* src/net/sf/ivmaidns/dnsx.java: Ditto.
+	* src/net/sf/ivmaidns/dnszcon.java: Ditto.
+	* src/net/sf/ivmaidns/dnslook.java (VERSION): Set version to 3.2.
+	* src/net/sf/ivmaidns/dnslook.java (main): Fix TTL directive issue
+	(output commented out TTL directive).
+	* src/net/sf/ivmaidns/dnslook.java (COPYRIGHT, LICENSE): Update.
+	* src/net/sf/ivmaidns/dnszcon.java (COPYRIGHT, LICENSE): Ditto.
+	* src/net/sf/ivmaidns/dnsx.java (dnsx2): Update author's e-mail and
+	the project site address.
+	* src/net/sf/ivmaidns/dnslook.java (DEFAULT_SERVER): Change the
+	default DNS server name.
+	* src/net/sf/ivmaidns/dnsx.java (main): Ditto.
+	* src/net/sf/ivmaidns/dnsx.java: Replace "com.sun.java.swing" package
+	with "javax.swing" one; replace "borland.jbcl" package with
+	"com.borland.jbcl" one.
+	* src/net/sf/ivmaidns/dnsx.java (dnsx1): Add FIXME to TreeControl().
+	* src/net/sf/ivmaidns/dnslook.java (main, ARGS_INFO): Recognize new
+	"-d" option.
+
+Local Variables:
+version-control: never
+End:
