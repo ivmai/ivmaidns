@@ -1,5 +1,14 @@
 2009-12-16  Ivan Maidanski <ivmai@mail.ru>
 
+	* build.xml: New file.
+	* src/net/sf/ivmaidns/dnslook.java (intMain): Return 0 if no args are
+	specified.
+	* src/net/sf/ivmaidns/dnszcon.java (intMain): Ditto.
+	* src/net/sf/ivmaidns/dnszcon.java (VERSION): Set version to 3.2 (to
+	match that in dnslook).
+
+2009-12-16  Ivan Maidanski <ivmai@mail.ru>
+
 	* ChangeLog: New file.
 	* GNU_GPL.txt: New file (GNU GPLv2 license).
 	* index.html: Move to "htdocs" directory.
@@ -109,7 +118,7 @@
 	* src/net/sf/ivmaidns/dnsx.java: Ditto.
 	* src/net/sf/ivmaidns/dnszcon.java: Ditto.
 	* src/net/sf/ivmaidns/dnslook.java (VERSION): Set version to 3.2.
-	* src/net/sf/ivmaidns/dnslook.java (main): Fix TTL directive issue
+	* src/net/sf/ivmaidns/dnslook.java (intMain): Fix TTL directive issue
 	(output commented out TTL directive).
 	* src/net/sf/ivmaidns/dnslook.java (COPYRIGHT, LICENSE): Update.
 	* src/net/sf/ivmaidns/dnszcon.java (COPYRIGHT, LICENSE): Ditto.
@@ -122,7 +131,7 @@
 	with "javax.swing" one; replace "borland.jbcl" package with
 	"com.borland.jbcl" one.
 	* src/net/sf/ivmaidns/dnsx.java (dnsx1): Add FIXME to TreeControl().
-	* src/net/sf/ivmaidns/dnslook.java (main, ARGS_INFO): Recognize new
+	* src/net/sf/ivmaidns/dnslook.java (intMain, ARGS_INFO): Recognize new
 	"-d" option.
 
 Local Variables:

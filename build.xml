@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+
+<!--
+ - @(#) build.xml - apache-ant build script for IvmaiDNS (dnslook, dnszcon).
+ -->
+
+<project name="IvmaiDNS" basedir="." default="all">
+
+  <property name="project.unix.name" value="ivmaidns"/>
+  <property name="application.package" value="net.sf.${project.unix.name}"/>
+  <property name="src.dir" value="src"/>
+
+  <property name="target.java.ver" value="1.2"/>
+  <property name="source.java.ver" value="${target.java.ver}"/>
+
+  <property name="dist.dir" value=".dist-jvm"/>
+  <property name="dist.project.dir" value="${dist.dir}/${project.unix.name}"/>
+  <property name="classes.lib.dir" value="${dist.dir}/.classes-lib"/>
+
+  <property name="classes.dnslook.dir" value="${dist.dir}/.classes-dnslook"/>
+  <property name="jar.dnslook.file" value="${dist.project.dir}/dnslook.jar"/>
+
+  <property name="classes.dnszcon.dir" value="${dist.dir}/.classes-dnszcon"/>
+  <property name="jar.dnszcon.file" value="${dist.project.dir}/dnszcon.jar"/>
+
+  <property name="readme.file.name" value="README.txt"/>
+  <property name="license.file.name" value="GNU_GPL.txt"/>
+
+  <target name="clean">
+    <delete dir="${dist.dir}"/>
+  </target>
+
+  <target name="test-compile-lib">
+    <mkdir dir="${classes.lib.dir}"/>
+    <javac srcdir="${src.dir}" destdir="${classes.lib.dir}">
+      <exclude name="**/${project.unix.name}/*.java"/>
+    </javac>
+  </target>
+
+  <target name="compile-dnslook">
+    <mkdir dir="${classes.dnslook.dir}"/>
+    <javac srcdir="${src.dir}" destdir="${classes.dnslook.dir}"
+           source="${source.java.ver}" target="${target.java.ver}">
+      <include name="**/dnslook.java"/>
+    </javac>
+  </target>
+
+  <target name="jar-dnslook" depends="compile-dnslook">
+    <mkdir dir="${dist.project.dir}"/>
+    <jar destfile="${jar.dnslook.file}" basedir="${classes.dnslook.dir}"
+         compress="false">
+      <manifest>
+        <attribute name="Main-Class" value="${application.package}.dnslook"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="run-dnslook" depends="jar-dnslook">
+    <java jar="${jar.dnslook.file}" fork="true"/>
+  </target>
+
+  <target name="compile-dnszcon">
+    <mkdir dir="${classes.dnszcon.dir}"/>
+    <javac srcdir="${src.dir}" destdir="${classes.dnszcon.dir}"
+           source="${source.java.ver}" target="${target.java.ver}">
+      <include name="**/dnszcon.java"/>
+    </javac>
+  </target>
+
+  <target name="jar-dnszcon" depends="compile-dnszcon">
+    <mkdir dir="${dist.project.dir}"/>
+    <jar destfile="${jar.dnszcon.file}" basedir="${classes.dnszcon.dir}"
+         compress="false">
+      <manifest>
+        <attribute name="Main-Class" value="${application.package}.dnszcon"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="run-dnszcon" depends="jar-dnszcon">
+    <java jar="${jar.dnszcon.file}" fork="true"/>
+  </target>
+
+  <target name="dist" depends="jar-dnslook,jar-dnszcon">
+    <copy file="${readme.file.name}" todir="${dist.project.dir}"
+          preservelastmodified="true"/>
+    <copy file="${license.file.name}" todir="${dist.project.dir}"
+          preservelastmodified="true"/>
+  </target>
+
+  <target name="build"
+          depends="test-compile-lib,jar-dnslook,jar-dnszcon,dist"/>
+
+  <target name="all" depends="clean,build,run-dnslook,run-dnszcon"/>
+
+</project>

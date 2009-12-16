@@ -221,7 +221,7 @@ public final class dnslook
     " domain are sequentially");
    System.out.println("tried to look up the entire domain from" +
     " until it succeeds.");
-   return 2;
+   return args.length > 0 ? 2 : 0;
   }
   DNSName qName;
   try

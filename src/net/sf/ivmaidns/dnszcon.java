@@ -66,7 +66,7 @@ import net.sf.ivmaidns.util.UnsignedInt;
 /**
  * Internet DNS zones multi-threaded retriever.
  **
- * @version 3.0
+ * @version 3.2
  * @author Ivan Maidanski
  */
 public final class dnszcon implements Notifiable
@@ -74,7 +74,7 @@ public final class dnszcon implements Notifiable
 
  public static final String NAME = "dnszcon";
 
- public static final String VERSION = "3.0";
+ public static final String VERSION = "3.2";
 
  public static final String DESCRIPTION =
   "Internet DNS zones multi-threaded retriever";
@@ -151,7 +151,7 @@ public final class dnszcon implements Notifiable
     " name servers. Subzones for the");
    System.out.println("zone being transferred are retrieved" +
     " only in the recursive mode.");
-   return 1;
+   return args.length > 0 ? 2 : 0;
   }
   int location = 0;
   DNSName rName = null;
