@@ -1,3 +1,7 @@
+2009-12-17  Ivan Maidanski <ivmai@mail.ru>
+
+	* build-win32-x86-jcgo.bat: New file.
+
 2009-12-16  Ivan Maidanski <ivmai@mail.ru>
 
 	* build.xml: New file.
