@@ -5,7 +5,7 @@ rem Used tools: JCGO, MinGW.
 set PROJ_UNIX_NAME=ivmaidns
 set DIST_DIR=.dist-win32-x86-jcgo
 
-echo Building Win32/x86 executable using JCGO+MinGW...
+echo Building Win32/x86 executables using JCGO+MinGW...
 
 if "%JCGO_HOME%"=="" set JCGO_HOME=C:\JCGO
 if "%MINGW_ROOT%"=="" set MINGW_ROOT=C:\MinGW
