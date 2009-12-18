@@ -1,3 +1,7 @@
+2009-12-18  Ivan Maidanski <ivmai@mail.ru>
+
+	* build.xml (jar-dnslook, jar-dnszcon): Don't disable compression.
+
 2009-12-17  Ivan Maidanski <ivmai@mail.ru>
 
 	* build-solaris-amd64-jcgo.sh: New executable file.

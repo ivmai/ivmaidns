@@ -47,8 +47,7 @@
 
   <target name="jar-dnslook" depends="compile-dnslook">
     <mkdir dir="${dist.project.dir}"/>
-    <jar destfile="${jar.dnslook.file}" basedir="${classes.dnslook.dir}"
-         compress="false">
+    <jar destfile="${jar.dnslook.file}" basedir="${classes.dnslook.dir}">
       <manifest>
         <attribute name="Main-Class" value="${application.package}.dnslook"/>
       </manifest>
@@ -69,8 +68,7 @@
 
   <target name="jar-dnszcon" depends="compile-dnszcon">
     <mkdir dir="${dist.project.dir}"/>
-    <jar destfile="${jar.dnszcon.file}" basedir="${classes.dnszcon.dir}"
-         compress="false">
+    <jar destfile="${jar.dnszcon.file}" basedir="${classes.dnszcon.dir}">
       <manifest>
         <attribute name="Main-Class" value="${application.package}.dnszcon"/>
       </manifest>
