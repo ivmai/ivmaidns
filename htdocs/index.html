@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en-us>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META http-equiv="content-language" content="en-us">
+<META name="distribution" content="global">
+<META name="robots" content="all">
+
+<TITLE>IvmaiDNS - a java DNS client library and utilities</TITLE>
+<LINK rev=made href="mailto:ivmai@mail.ru">
+<META name="author" content="Ivan Maidanski">
+
+<STYLE type="text/css"><!--
+
+HTML {
+ font-size: 100%;
+}
+
+BODY {
+ margin: 0.8em;
+ font-family: helvetica, sans-serif;
+ color: black;
+ background: #eff;
+}
+
+H1 {
+ clear: both;
+ margin-top: 0.8em;
+ text-align: center;
+ word-spacing: 0.3em;
+ font-weight: bold;
+ text-decoration: underline;
+}
+
+H3 {
+ clear: both;
+ text-align: left;
+ margin-left: 0.3em;
+ margin-bottom: 0.1em;
+}
+
+P {
+ text-align: justify;
+ text-indent: 1.3em;
+ margin-top: 0.2em;
+ margin-bottom: 0;
+}
+
+OL, UL {
+ text-align: left;
+ text-indent: 1.1em;
+ margin: 0;
+ list-style-position: inside;
+ padding: 0;
+}
+
+ACRONYM {
+ font-weight: bolder;
+ white-space: nowrap;
+}
+
+CODE {
+ font-family: monospace;
+ font-size: larger;
+}
+
+PRE {
+ padding: 0;
+ margin: 0 0 0.7em 1.3em;
+}
+
+A:link { color: blue; }
+
+A:visited { color: purple; }
+
+A:hover { color: red; }
+
+A:active { color: green; }
+
+A {
+ white-space: nowrap;
+}
+
+A.external { }
+
+A.mailto {
+ color: teal;
+ font-style: oblique;
+}
+
+DIV {
+ min-width: 35em;
+ margin-top: 1em;
+}
+
+DIV.subsection {
+ margin-bottom: 0.9em;
+}
+
+DIV.download {
+ margin-bottom: 0.9em;
+ border-top: 1pt dashed blue;
+}
+
+DIV.license {
+ border-top: thin solid blue;
+ text-align: center;
+ font-size: 110%;
+ font-family: monospace;
+}
+
+DIV.page-footer {
+ border-top: thin solid blue;
+ margin-top: 1.2em;
+ text-align: center;
+}
+
+.copyright {
+ text-align: right;
+ white-space: nowrap;
+ font-size: x-small;
+ font-weight: lighter;
+}
+
+--></STYLE>
+
+</HEAD>
+<BODY>
+
+<A href="http://sourceforge.net/projects/ivmaidns/">
+<IMG src="http://sflogo.sourceforge.net/sflogo.php?group_id=293366&type=14"
+alt="get IvmaiDNS at SourceForge.net" width=150 height=40 border=0></A>
+
+<H1 align=center>IvmaiDNS</H1>
+
+<DIV class=subsection>
+<H3>Preface</H3>
+<P>IvmaiDNS is a pure java DNS client implementation. It consists of a library
+and utilities for looking up the Internet domain names. The utilities are also
+able to fetch an entire domain zone and save it in the standard DNS zone file
+format.
+</DIV>
+
+<DIV class=download>
+<H3>Download</H3>
+<P>To get the latest <ACRONYM>IvmaiDNS</ACRONYM> release binaries or the
+source code, please visit
+<A href="http://sourceforge.net/projects/ivmaidns/files/">"Browse files for
+IvmaiDNS"</A>.
+<P>Online auto-generated documentation for the class library is available
+<A href="javadoc/index.html">here</A>.
+</DIV>
+
+<DIV class=subsection>
+<H3>Disclaimer</H3>
+<P>You use this software at your own risk. This application is for legal use
+only. All rights reserved.
+</DIV>
+
+<DIV class=subsection>
+<H3>Installation</H3>
+<P>Download the binary distributive file appropriate to your host platform.
+<P>Extract the contents of the distributive file (preserving the directories
+structure) into any appropriate place (eg., "C:\Program Files" for Windows,
+"/usr/share" for Linux and Solaris) on your hard drive. No other setup is
+required.
+<P>To uninstall the software, just remove "ivmaidns" directory.
+
+</DIV>
+
+<DIV class=subsection>
+<H3>Supported platforms</H3>
+<P><ACRONYM>IvmaiDNS</ACRONYM> tools are officially built for the following
+platforms:
+<UL>
+<LI>JavaVM (<ACRONYM>J2SE</ACRONYM>/<ACRONYM>JDK</ACRONYM> v1.2+);
+<LI>Windows x86 (Win95/98/Me/NT/2000/XP/2003/Vista/Win7);
+<LI>Linux x86 (tested on CentOS);
+<LI>Sun Solaris amd64.
+</UL>
+<P>The native binary files (for Win32, Linux, Solaris) are created using the
+<ACRONYM>JCGO</ACRONYM> tool and the corresponding C/C++ compiler.
+</DIV>
+
+<DIV class=subsection>
+<H3>General</H3>
+<P>The major goals of this project are:
+<UL>
+<LI>develop a pure java library implementing <ACRONYM>DNS</ACRONYM> (domain
+name system) basic primitives and simplifying development of a
+<ACRONYM>DNS</ACRONYM> client application;
+<LI>develop a tool (named "dnslook") similar to the well-known Unix
+<ACRONYM>nslookup</ACRONYM> one but with the ability to save fetched domain
+zones in the standard <ACRONYM>DNS</ACRONYM> server zone format;
+<LI>develop a multi-threaded interactive console tool getting
+<ACRONYM>DNS</ACRONYM> zones in parallel and recursively equipped with a load
+balancing algorithm.
+</UL></DIV>
+
+<DIV class=subsection>
+<H3>Usage directions for dnslook</H3>
+<P>Synopsis:
+<PRE><CODE>
+dnslook [-z] [-n] [-p] [&lt;dns_server>] &lt;name> [[-d] &lt;out_txt_file>]
+</CODE></PRE>
+<P>Options:
+<UL>
+<LI><CODE>-d</CODE> &lt;out_txt_file> Save records to a given file
+<LI><CODE>-p</CODE> Save records in the plain format
+<LI><CODE>-z</CODE> Get all records for the domain
+<LI><CODE>-n</CODE> Look up only name server records (if used without
+<CODE>-z</CODE>)
+<LI><CODE>-n</CODE> Try all available name servers until success (if with
+<CODE>-z</CODE>)
+</UL>
+<P>Information (displayed if invoked without parameters):
+<P>This utility allows the user to look up Internet <ACRONYM>DNS</ACRONYM>
+records and entire domains of a given name from the specified server. Every
+such record consists of its name, the class (<ACRONYM>IN</ACRONYM>),
+time-to-live value, its type (mostly <ACRONYM>A</ACRONYM>,
+<ACRONYM>NS</ACRONYM>, <ACRONYM>MX</ACRONYM>, <ACRONYM>CNAME</ACRONYM>,
+<ACRONYM>PTR</ACRONYM> or <ACRONYM>SOA</ACRONYM>), and its value according to
+its type. Refer to RFC1035 document for more information on
+<ACRONYM>DNS</ACRONYM>.
+<P>Here, if &lt;dns_server> parameter is omitted then the default server is
+used. If an optional &lt;out_txt_file> name is specified then the looked up
+records are all saved to it in the standard <ACRONYM>DNS</ACRONYM> zone file
+format, which is either plain (the fields of the records are tab-separated) if
+<CODE>-p</CODE> option is set or blank-padded (with the records sorted
+ascending and duplicated records removed). By default, all the records of a
+given name are looked up, but setting of <CODE>-n</CODE> option causes the
+utility to look up only name server records.
+<P>To look up an entire domain (zone) <CODE>-z</CODE> option must be set (but,
+this operation succeeds only if zone transferring is allowed by the server).
+If <CODE>-n</CODE> option is set in addition to <CODE>-z</CODE> option then
+all of the authoritative name servers for a given domain are sequentially
+tried to look up the entire domain from until it succeeds.
+</DIV>
+
+<DIV class=subsection>
+<H3>Usage directions for dnszcon</H3>
+<P>Synopsis:
+<PRE><CODE>
+dnszcon &lt;out_text_file>
+</CODE></PRE>
+<P>Options: none.
+<P>Information (displayed if invoked without parameters):
+<P>This tool allows the user to fetch (retrieve) Internet
+<ACRONYM>DNS</ACRONYM> records and entire <ACRONYM>DNS</ACRONYM> zones of a
+given name from their authoritative name servers. The tool is an interactive
+console program which processes user retrieval queries asynchronously in the
+background (up to 30 queries to different name servers at a time). All
+retrieved records are immediately put into the built-in sorted storage, which
+may be listed by user at run-time, and which is saved to the specified file
+(in a textual tab-separated format) on exit. An entire zone retrieving (zone
+transferring) is possible only if it is allowed at least by one of its
+authoritative name servers. Subzones for the zone being transferred are
+retrieved only in the recursive mode.
+<P>Interactive console commands:
+<UL>
+<LI>&lt;zone> &lt;server1> ... - get and list name server records for
+&lt;zone>
+<LI>?&lt;name> &lt;server1> ... - try to retrieve all records for &lt;name>
+<LI>!&lt;zone> &lt;server1> ... - try to retrieve entire &lt;zone>
+<LI>&lt;zone> - list all retrieved records for &lt;zone> and its subzones
+<LI>"+" - enable recursive mode
+<LI>"-" - disable recursive mode (default)
+<LI>"?" - view retriever activity and memory utilization
+<LI>"&" - pause/resume activity
+<LI>"!" - show statistics, save retrieved records to file and exit
+</UL>
+
+<DIV class=subsection>
+<H3>User's feedback</H3>
+<P>Any questions, suggestions, bug reports and patches are welcomed at the
+<ACRONYM>IvmaiDNS</ACRONYM>
+<A href="http://sourceforge.net/projects/ivmaidns/develop/">site tracker</A>
+(hosted at SourceForge.net).
+</DIV>
+
+<DIV class=subsection>
+<H3>External resources</H3>
+<P>Links to 3rd-party libraries and tools:
+<UL>
+<LI><A class=external target="_blank" href="http://www.dnsjava.org">dnsjava</A>
+(an implementation of <ACRONYM>DNS</ACRONYM> in Java)
+<LI><A class=external target="_blank" href="http://ant.apache.org">Apache Ant</A>
+(a Java-based build tool)
+</UL></DIV>
+
+<DIV class=license>
+<H3>License</H3>
+<P>This is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version.
+<P>This software is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License (GPL) for more details.
+<P>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+<P>Linking this library statically or dynamically with other modules is
+making a combined work based on this library. Thus, the terms and
+conditions of the GNU General Public License cover the whole
+combination.
+<P>As a special exception, the copyright holders of this library give you
+permission to link this library with independent modules to produce an
+executable, regardless of the license terms of these independent
+modules, and to copy and distribute the resulting executable under
+terms of your choice, provided that you also meet, for each linked
+independent module, the terms and conditions of the license of that
+module. An independent module is a module which is not derived from
+or based on this library. If you modify this library, you may extend
+this exception to your version of the library, but you are not
+obligated to do so. If you do not wish to do so, delete this
+exception statement from your version.
+</DIV>
+
+<DIV class=page-footer>
+<P class=copyright>&copy; 1999-2001
+<A class=mailto href="mailto:ivmai@mail.ru">Ivan Maidanski</A>
+</DIV>
+
+</BODY></HTML>

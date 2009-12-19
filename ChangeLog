@@ -1,3 +1,10 @@
+[3.2 release]
+
+2009-12-19  Ivan Maidanski <ivmai@mail.ru>
+
+	* htdocs/index.html: New file (also put it and "javadoc" directory to
+	sftp:web.sf.net/htdocs).
+
 2009-12-19  Ivan Maidanski <ivmai@mail.ru>
 
 	* README.txt: New file.
