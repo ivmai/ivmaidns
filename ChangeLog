@@ -1,3 +1,7 @@
+2009-12-19  Ivan Maidanski <ivmai@mail.ru>
+
+	* build.xml (docgen): New target.
+
 2009-12-18  Ivan Maidanski <ivmai@mail.ru>
 
 	* build.xml (jar-dnslook, jar-dnszcon): Don't disable compression.

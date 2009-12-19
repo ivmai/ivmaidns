@@ -17,6 +17,8 @@
   <property name="dist.project.dir" value="${dist.dir}/${project.unix.name}"/>
   <property name="classes.lib.dir" value="${dist.dir}/.classes-lib"/>
 
+  <property name="docgen.out.dir" value="${dist.dir}/htdocs/javadoc"/>
+
   <property name="classes.dnslook.dir" value="${dist.dir}/.classes-dnslook"/>
   <property name="jar.dnslook.file" value="${dist.project.dir}/dnslook.jar"/>
 
@@ -86,9 +88,18 @@
           preservelastmodified="true"/>
   </target>
 
-  <target name="build"
-          depends="test-compile-lib,jar-dnslook,jar-dnszcon,dist"/>
+  <target name="docgen">
+    <mkdir dir="${docgen.out.dir}"/>
+    <javadoc sourcepath="${src.dir}" destdir="${docgen.out.dir}">
+      <package name="${application.package}.dns"/>
+      <package name="${application.package}.storage"/>
+      <package name="${application.package}.util"/>
+    </javadoc>
+  </target>
 
-  <target name="all" depends="clean,build,run-dnslook,run-dnszcon"/>
+  <target name="build" depends="jar-dnslook,jar-dnszcon,dist"/>
+
+  <target name="all"
+    depends="clean,test-compile-lib,build,docgen,run-dnslook,run-dnszcon"/>
 
 </project>
